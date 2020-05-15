@@ -3,6 +3,7 @@ import {data} from '../data';
 import Navbar from './Navbar';
 import Moviecard from './Moviecard';
 import movies from '../reducers';
+import { addMovies } from '../actions';
 
 class App extends React.Component {
 
@@ -16,10 +17,7 @@ class App extends React.Component {
     })
     // make an api call
     // dispatch the function
-  store.dispatch({
-      type : "ADD_MOVIE",
-      movies : data 
-    })
+  store.dispatch(addMovies(data));
 // 4th call 
     console.log("STATE" ,store.getState());
   }
