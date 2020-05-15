@@ -23,7 +23,7 @@ class App extends React.Component {
   }
   // 5th call
   render(){
-  const movies = this.props.store.getState();
+  const {list} = this.props.store.getState();// pahele yaha per {list[] , favourites[]}
   console.log('render');
   return (
     <div className="App">
@@ -36,7 +36,7 @@ class App extends React.Component {
       </div>
       {/* displaying data on screen */}
       <div className="list">
-           {movies.map((movie , index )=> (
+           {list.map((movie , index )=> (
             <Moviecard movie={movie} key={`movies-${index}`}/>
              ) ) }
 
