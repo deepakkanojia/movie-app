@@ -2,8 +2,31 @@ import React from 'react';
 import {data} from '../data';
 import Navbar from './Navbar';
 import Moviecard from './Moviecard';
+import movies from '../reducers';
 
-function App() {
+class App extends React.Component {
+
+  componentDidMount(){
+    // console.log('did mount');
+    //3rd call 
+    const {store} = this.props;
+    store.subscribe(()=>{
+      console.log('UPdated');
+      this.forceUpdate();
+    })
+    // make an api call
+    // dispatch the function
+  store.dispatch({
+      type : "ADD_MOVIE",
+      movies : data 
+    })
+// 4th call 
+    console.log("STATE" ,store.getState());
+  }
+  // 5th call
+  render(){
+  const movies = this.props.store.getState();
+  console.log('render');
   return (
     <div className="App">
     <Navbar />
@@ -15,7 +38,7 @@ function App() {
       </div>
       {/* displaying data on screen */}
       <div className="list">
-           {data.map((movie , index )=> (
+           {movies.map((movie , index )=> (
             <Moviecard movie={movie} key={`movies-${index}`}/>
              ) ) }
 
@@ -25,5 +48,5 @@ function App() {
     
   );
 }
-
+}
 export default App;

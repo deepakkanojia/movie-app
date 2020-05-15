@@ -6,20 +6,20 @@ import './index.css';
 import App from './components/App';
 import movies from './reducers' ;
 
-
+//calling 1st 
 const store = createStore(movies);
 console.log('store' , store);
-console.log('BEFORE STATE' , store.getState());
+// console.log('BEFORE STATE' , store.getState());
 
-store.dispatch({
-  type : 'ADD_MOVIE',
-  movies : [{name : 'SUPERMAN'}]
-});
+// store.dispatch({
+//   type : 'ADD_MOVIE',
+//   movies : [{name : 'SUPERMAN'}]
+// });
 
-console.log('AFTER STATE' , store.getState());
-
+// console.log('AFTER STATE' , store.getState());
+//render
 ReactDOM.render(
-  <App></App>,
+  <App store={store}></App>,
   document.getElementById('root')
 );
 
